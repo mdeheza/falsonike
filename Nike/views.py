@@ -10,7 +10,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-
+from django.views.generic import DetailView, UpdateView, DeleteView
+from django.urls import reverse
 
 
 #--------------------------------------Parte de Indumentarias--------------------------------------------------------------
@@ -200,4 +201,64 @@ def buscar_productos_indumentarias(request):
     else:
         context = {"errors": "No se encontro el producto"}
     return render(request, "search_product.html", context=context)
+
+#AGREGADO POR MARIANO (TAMBIEN from django.views.generic import DetailView, UpdateView + delete)
+
+class Detalle_calzado(DetailView):
+    model= calzados
+    template_name= 'calzado_detalle.html'
+
+class Detalle_indumentarias(DetailView):
+    model= indumentarias
+    template_name= 'indumentarias_detalle.html'
+    
+class Detalle_accesorios(DetailView):
+    model= accesorios
+    template_name= 'accesorios_detalle.html'
+    
+class Eliminar_calzado(DeleteView):
+    model= calzados
+    template_name= 'calzado_eliminar.html'
+  
+    def get_success_url(self):
+        return reverse ('ZapatillaDeportiva')
+    
+class Eliminar_indumentarias(DeleteView):
+    model= indumentarias
+    template_name= 'indumentarias_eliminar.html'
+  
+    def get_success_url(self):
+        return reverse ('Indumentarias')
+    
+class Eliminar_accesorios(DeleteView):
+    model= accesorios
+    template_name= 'accesorios_eliminar.html'
+  
+    def get_success_url(self):
+        return reverse ('Accesorios')
+    
+class Editar_calzado (UpdateView):
+    model= calzados
+    template_name= 'calzado_editar.html'
+    fields= '__all__'
+    
+    def get_success_url(self):
+        return reverse ('Calzados')
+    
+class Editar_indumentarias (UpdateView):
+    model= indumentarias
+    template_name= 'indumentarias_editar.html'
+    fields= '__all__'
+    
+    def get_success_url(self):
+        return reverse ('Indumentarias')
+
+class Editar_accesorios (UpdateView):
+    model= accesorios
+    template_name= 'accesorios_editar.html'
+    fields= '__all__'
+    
+    def get_success_url(self):
+        return reverse ('Accesorios')
+    
 
