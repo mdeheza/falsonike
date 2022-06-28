@@ -68,9 +68,10 @@ def Buzos(request):
 #--------------------------------------Parte de Calzados--------------------------------------------------------------
 def calzado_view(request):
     print(request.method)
-    calzado = calzados.objects.all()
-    context = {'calzado':calzado}
+    productos = calzados.objects.all()
+    context = {'productos':productos}
     return render(request, 'calzado.html', context=context)
+
 
 def crear_productos_calzados(request):
     if request.method == 'GET':
@@ -119,8 +120,8 @@ def Ojotas(request):
 #--------------------------------------Parte de Accesorios--------------------------------------------------------------
 def accesorio_view(request):
     print(request.method)
-    accesorio = accesorios.objects.all()
-    context = {'accesorio':accesorio}
+    productos = accesorios.objects.all()
+    context = {'productos':productos}
     return render(request, 'accesorio.html', context=context)
 
 def crear_productos_accesorios(request):

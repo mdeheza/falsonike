@@ -26,7 +26,7 @@ urlpatterns =[
     
     path('Indumentarias/', indumentaria_view, name = 'Indumentarias'),
     path('Calzados/', calzado_view, name = 'Calzados'),
-    path('Accesorios/', accesorio_view, name = 'Accesorios1'),
+    path('Accesorios/', accesorio_view, name = 'Accesorios'),
 
     path('Remeras/', Remeras, name = 'Remeras'),
     path('Camperas/', Camperas, name = 'Camperas'),
